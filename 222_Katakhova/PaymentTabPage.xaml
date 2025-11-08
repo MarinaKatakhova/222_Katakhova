@@ -1,0 +1,132 @@
+﻿<Page x:Class="_222_Katakhova.PaymentTabPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:_222_Katakhova"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+     Title="Платежи">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <Border Grid.Row="0" Padding="10" BorderThickness="0 0 0 1">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Text="Поиск:" VerticalAlignment="Center" Margin="0,0,10,0"/>
+                <TextBox x:Name="SearchTextBox" Grid.Column="1" 
+                         TextChanged="SearchTextBox_TextChanged"
+                         Padding="5" VerticalContentAlignment="Center"
+                         ToolTip="Поиск по названию платежа, пользователю или категории"/>
+
+                <Button x:Name="ClearSearchButton" Grid.Column="2" 
+                        Content="Очистить" Margin="10,0,0,0"
+                        Click="ClearSearchButton_Click"
+                        ToolTip="Очистить поиск"/>
+
+                <Button x:Name="SortButton" Grid.Column="3" 
+                        Content="Сортировка по дате ▼"
+                        Click="SortButton_Click"
+                        ToolTip="Сортировка по дате"/>
+            </Grid>
+        </Border>
+
+        <Border Grid.Row="1" Background="#f9f9f9" Padding="10" BorderBrush="#ddd" BorderThickness="0 0 0 1">
+            <StackPanel Orientation="Horizontal">
+                <!-- Фильтр по пользователю -->
+                <TextBlock Text="Пользователь:" VerticalAlignment="Center" Margin="0,0,10,0"/>
+                <ComboBox x:Name="UserFilterComboBox" 
+                          SelectionChanged="UserFilterComboBox_SelectionChanged"
+                          Width="150" Margin="0,0,20,0"
+                          DisplayMemberPath="FIO">
+                    <ComboBoxItem Content="Все пользователи" IsSelected="True"/>
+                </ComboBox>
+
+                <!-- Фильтр по категории -->
+                <TextBlock Text="Категория:" VerticalAlignment="Center" Margin="0,0,10,0"/>
+                <ComboBox x:Name="CategoryFilterComboBox" 
+                          SelectionChanged="CategoryFilterComboBox_SelectionChanged"
+                          Width="150" Margin="0,0,20,0"
+                          DisplayMemberPath="Name">
+                    <ComboBoxItem Content="Все категории" IsSelected="True"/>
+                </ComboBox>
+
+                <!-- Фильтр по сумме -->
+                <TextBlock Text="Сумма от:" VerticalAlignment="Center" Margin="0,0,5,0"/>
+                <TextBox x:Name="MinAmountTextBox" 
+                         Width="60" 
+                         TextChanged="AmountFilter_TextChanged"
+                         ToolTip="Минимальная сумма"/>
+                <TextBlock Text="до:" VerticalAlignment="Center" Margin="10,0,5,0"/>
+                <TextBox x:Name="MaxAmountTextBox" 
+                         Width="60" 
+                         TextChanged="AmountFilter_TextChanged"
+                         ToolTip="Максимальная сумма"/>
+
+                <Button x:Name="ClearFiltersButton" 
+                        Content="Сбросить фильтры"
+                        Click="ClearFiltersButton_Click"
+                        ToolTip="Сбросить все фильтры"
+                        Margin="20,0,0,0"/>
+            </StackPanel>
+        </Border>
+
+        <!-- Информация о результатах -->
+        <TextBlock x:Name="ResultsInfoText" Grid.Row="2" 
+                   Margin="10,5" FontSize="12"/>
+
+        <!-- Таблица платежей -->
+        <DataGrid Grid.Row="3" x:Name="DataGridPayment" 
+                  AutoGenerateColumns="False" IsReadOnly="True"
+                  CanUserSortColumns="True">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Дата" Binding="{Binding Date, StringFormat=dd.MM.yyyy}" Width="80"/>
+                <DataGridTextColumn Header="Пользователь" Binding="{Binding User.FIO}" Width="120" />
+                <DataGridTextColumn Header="Название платежа" Binding="{Binding Name}" Width="150"/>
+                <DataGridTextColumn Header="Количество" Binding="{Binding Num}" Width="80"/>
+                <DataGridTextColumn Header="Сумма" Binding="{Binding Price, StringFormat=N2}" Width="80"/>
+                <DataGridTextColumn Header="Категория" Binding="{Binding Category.Name}" Width="120" />
+                <DataGridTemplateColumn Width="100" Header="Действия">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button x:Name="ButtonEdit" Content="Редактировать" 
+                                    ToolTip="Редактировать данные" 
+                                    Click="ButtonEdit_Click"
+                                    Padding="5,2" FontSize="10"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <Border Grid.Row="4" Padding="10">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Button Grid.Column="0" x:Name="ButtonAdd" ToolTip="Добавить данные" 
+                        Content="Добавить платеж" HorizontalAlignment="Left" 
+                        Click="ButtonAdd_Click" Padding="10,5" MinWidth="120"/>
+
+                <Button Grid.Column="1" x:Name="ButtonDel" ToolTip="Удалить данные" 
+                        Content="Удалить выбранные" HorizontalAlignment="Right" 
+                        Click="ButtonDel_Click" Padding="10,5" MinWidth="120"/>
+            </Grid>
+        </Border>
+    </Grid>
+</Page>

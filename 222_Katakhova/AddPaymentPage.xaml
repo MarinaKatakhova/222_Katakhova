@@ -1,0 +1,60 @@
+﻿<Page x:Class="_222_Katakhova.AddPaymentPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:_222_Katakhova"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+  Title="Добавление платежа">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <TextBlock Text="Название платежа" Grid.Row="0" FontSize="20" Margin="10,10,0,0"/>
+        <TextBox x:Name="TBPaymentName" Grid.Row="0" Grid.Column="1" Margin="10,10,10,0" 
+                 Text="{Binding Name}" />
+
+        <TextBlock Text="Сумма" Grid.Row="1" FontSize="20" Margin="10,10,0,0"/>
+        <TextBox x:Name="TBAmount" Grid.Row="1" Grid.Column="1" Margin="10,10,10,0" 
+                 Text="{Binding Price}" />
+
+        <TextBlock Text="Количество" Grid.Row="2" FontSize="20" Margin="10,10,0,0"/>
+        <TextBox x:Name="TBCount" Grid.Row="2" Grid.Column="1" Margin="10,10,10,0" 
+                 Text="{Binding Num}" />
+
+        <TextBlock Text="Дата" Grid.Row="3" FontSize="20" Margin="10,10,0,0"/>
+        <TextBox x:Name="TBDate" Grid.Row="3" Grid.Column="1" Margin="10,10,10,0" 
+                 Text="{Binding Date}"/>
+
+        <TextBlock Text="Пользователь" Grid.Row="4" FontSize="20" Margin="10,10,0,0"/>
+        <ComboBox x:Name="CBUser" Grid.Row="4" Grid.Column="1" Margin="10,10,10,0" 
+                  SelectedValuePath="ID" SelectedValue="{Binding UserID}"
+                  DisplayMemberPath="FIO"/>
+
+        <TextBlock Text="Категория" Grid.Row="5" FontSize="20" Margin="10,10,0,0"/>
+        <ComboBox x:Name="CBCategory" Grid.Row="5" Grid.Column="1" Margin="10,10,10,0" 
+                  SelectedValuePath="ID" SelectedValue="{Binding CategoryID}"
+                  DisplayMemberPath="Name"/>
+
+        <Button x:Name="ButtonSave" Content="Сохранить" Grid.Row="6" 
+                Click="ButtonSave_Click" Grid.ColumnSpan="2" 
+                HorizontalAlignment="Right" Margin="0,0,100,10" Width="100" Height="30"/>
+        <Button x:Name="ButtonClean" Content="Очистить" Grid.Row="6" 
+                Click="ButtonClean_Click" Grid.ColumnSpan="2" 
+                HorizontalAlignment="Left" Margin="100,0,0,10" Width="100" Height="30"/>
+    </Grid>
+</Page>

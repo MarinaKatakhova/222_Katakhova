@@ -1,0 +1,63 @@
+﻿<Page x:Class="_222_Katakhova.AdminPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:_222_Katakhova"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Панель администратора">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="0" 
+                   Text="Панель администратора" 
+                   FontSize="24" 
+                   FontWeight="Bold"
+                   HorizontalAlignment="Center" 
+                   Margin="0,20,0,20"/>
+
+        <StackPanel Grid.Row="1" 
+                    VerticalAlignment="Center" 
+                    HorizontalAlignment="Center"
+                    Orientation="Vertical"
+                    Width="300">
+
+            <Button x:Name="BtnTab1" 
+                    Content="Таблица пользователей" 
+                    Height="41" 
+                    Margin="0,10,0,10"
+                    Click="BtnTab1_Click"
+                    FontSize="14"
+                    FontWeight="Bold"/>
+
+            <Button x:Name="BtnTab2" 
+                    Content="Таблица категорий" 
+                    Height="41" 
+                    Margin="0,10,0,10"
+                    Click="BtnTab2_Click"
+                    FontSize="14"
+                    FontWeight="Bold"/>
+
+            <Button x:Name="BtnTab3" 
+                    Content="Таблица платежей" 
+                    Height="41" 
+                    Margin="0,10,0,10"
+                    Click="BtnTab3_Click"
+                    FontSize="14"
+                    FontWeight="Bold"/>
+
+            <Button x:Name="BtnDiagram" 
+                    Content="Диаграммы" 
+                    Height="41" 
+                    Margin="0,10,0,10"
+                    Click="BtnDiagram_Click"
+                    FontSize="14"
+                    FontWeight="Bold"/>
+        </StackPanel>
+    </Grid>
+</Page>

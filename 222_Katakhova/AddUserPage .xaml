@@ -1,0 +1,73 @@
+﻿<Page x:Class="_222_Katakhova.AddUserPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:_222_Katakhova"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+  Title="Добавление пользователя">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <TextBlock Text="Логин" Grid.Row="0" Grid.Column="0" Margin="10,0,0,0" FontSize="20" />
+        <TextBlock Text="Пароль" Grid.Row="1" Grid.Column="0" Margin="10,0,0,0" FontSize="20" />
+        <TextBlock Text="Роль" Grid.Row="2" Grid.Column="0" Margin="10,0,0,0" FontSize="20" />
+        <TextBlock Text="ФИО" Grid.Row="3" Grid.Column="0" Margin="10,0,0,0" FontSize="20" />
+        <TextBlock Text="Фото" Grid.Row="4" Grid.Column="0" Margin="10,0,0,0" FontSize="20" />
+
+        <TextBox x:Name="TBLogin" Text="{Binding Login}" Grid.Row="0" Grid.Column="1" 
+                 ToolTip="Введите логин" Margin="10,5,10,5" />
+        <TextBox x:Name="TBPass" Text="{Binding Password}" Grid.Column="1" Grid.Row="1" 
+                 ToolTip="Введите пароль" Margin="10,5,10,5" />
+
+        <ComboBox Name="cmbRole" SelectedItem="{Binding Role}" Grid.Row="2" Grid.Column="1" 
+                  ToolTip="Выберите роль" Margin="10,5,10,5">
+            <ComboBoxItem Content="Admin" />
+            <ComboBoxItem Content="User" />
+        </ComboBox>
+
+        <TextBox x:Name="TBFio" Text="{Binding FIO}" Grid.Row="3" Grid.Column="1" 
+                 ToolTip="Введите ФИО" Margin="10,5,10,5" />
+
+        <!-- Блок для загрузки фото -->
+        <StackPanel Grid.Row="4" Grid.Column="1" Orientation="Horizontal" Margin="10,5,10,5">
+            <Button x:Name="ButtonLoadPhoto" Content="Загрузить фото" 
+                    Click="ButtonLoadPhoto_Click"
+                    Width="120" Height="30" Margin="0,0,10,0"/>
+            <Button x:Name="ButtonRemovePhoto" Content="Удалить фото" 
+                    Click="ButtonRemovePhoto_Click"
+                    Width="100" Height="30" Margin="0,0,10,0"/>
+            <TextBlock x:Name="TBPhotoStatus" Text="Фото не загружено" 
+                       VerticalAlignment="Center" FontSize="12"/>
+        </StackPanel>
+
+        <!-- Превью фото -->
+        <Image x:Name="ImagePreview" Grid.Row="5" Grid.Column="1" 
+               MaxWidth="150" MaxHeight="150" Margin="10,5,10,5"
+               Stretch="Uniform"/>
+
+        <StackPanel Grid.Row="7" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button x:Name="ButtonSave" Content="Сохранить" 
+                    Click="ButtonSave_Click"
+                    Width="100" Height="30" Margin="10"/>
+            <Button x:Name="ButtonClean" Content="Очистить" 
+                    Click="ButtonClean_Click"
+                    Width="100" Height="30" Margin="10"/>
+        </StackPanel>
+    </Grid>
+</Page>
