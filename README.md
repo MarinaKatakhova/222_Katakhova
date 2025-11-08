@@ -7,7 +7,6 @@
 ![WPF](https://img.shields.io/badge/WPF-.NET%204.7.2-blue)
 ![Entity Framework](https://img.shields.io/badge/Entity%20Framework-6.5.1-green)
 ![SQL Server](https://img.shields.io/badge/SQL%20Server-2016+-red)
-![License](https://img.shields.io/badge/License-MIT-yellow)
 
 </div>
 
